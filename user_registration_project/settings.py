@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'user_registration_project.wsgi.application'
 DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'User_register',  
+        'NAME': 'Register',  
         'USER': 'avnadmin',  
         'PASSWORD': os.getenv('PASSWORD'),  
         'HOST': 'mysql-7e08941-pas-ver-1.a.aivencloud.com',  
