@@ -1,0 +1,49 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+{% bootstrap_javascript %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>userhome</title>
+</head>
+<body>
+    <style>
+        #head{
+          background-image: url('{% static "images/student.jpg" %}');
+        }
+      </style>
+    <div class= "h-100" style="background-position: center; background-repeat: no-repeat;
+    background-size: cover;" id="head">
+        <div class="vh-100" id="cont" style = "background-color: rgb(35, 35, 35); opacity: 0.85;">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                    <div class="mb-2"><a href="{% url 'home' %}" class="text-white fs-5" style="text-decoration:none;">Home</a></div>
+                    <div class="mb-2"><a href="{% url 'createuser' %}" class="text-white fs-5" style="text-decoration:none;">New Registration</a></div>                        
+                    <div><a href="{% url 'allusers' %}" class="text-white fs-5" style="text-decoration:none;">All Users</a></div>
+                </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark container-fluid">
+                <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            </nav>
+            <h1 style="color: rgb(255, 255, 255); font-family:'Courier New', Courier, monospace;
+            font-size: 70px;margin-left: 5%;margin-top:7%">Simplify Your Registration<br>Process</h1>
+            <div data-aos="fade-up"data-aos-duration="600">
+                <p style="color:white;font-size: 25px;margin-left: 5%;"><strong style="font-size:35px;">S</strong>treamline your registration 
+                process with our <br> user registration. Trust us to handle your registration <br> efficiently.</p>
+            <div class="d-grid gap-2 col-6 mx-auto" style="color: rgb(255, 255, 255); margin-top:5%;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                <a href="{% url 'allusers' %}" class="btn btn-light" type="button">All Users</a>
+                <a href="{% url 'createuser' %}" class="btn btn-light" type="button">Create User</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+{% bootstrap_javascript %}
+{% load static %}
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update user</title>
+</head>
+<body>
+    <style>
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+            }
+        .card-registration .select-arrow {
+            top: 13px;
+            }
+    </style>
+    <section class="bg-dark">
+        <div class="container py-5">
+          <div class="row d-flex justify-content-center align-items-center">
+            <div class="col">
+              <div class="card card-registration my-4">
+                <div class="row g-0">
+                  <div class="col-xl-6 d-none d-xl-block">
+                    <img src="{% static 'images/bk.avif' %}"
+                      alt="Sample photo" class="img-fluid"
+                      style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                  </div>
+                  <div class="col-xl-6">
+                    <div class="card-body p-md-5 text-black">
+                      <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h3 class="mb-5 text-uppercase">User Update form</h3>
+        
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.first_name style=style %}
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.last_name style=style %}
+                            </div>
+                          </div>
+                        </div>
+        
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.email style=style %}
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.Mobile style=style %}
+                            </div>
+                          </div>
+                        </div>
+        
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.Date_of_birth style=style %}
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.username style=style %}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-8 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.Userimg style=style %}
+                              <p>Leave it if you don't want change image.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.gender style=style %}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                              {% render_field serializer.Address style=style %}
+                            </div>
+                          </div>
+                        </div>
+      
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-secondary btn-lg" type="reset">Reset</button>
+                            <button class="btn btn-success btn-lg" type="submit">Update user</button>
+                          </div>
+                      </form>
+      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_messages %}
+{% bootstrap_javascript %}
+{% load static %}
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  <title>allusers</title>
+  <style>
+    body{
+        background: #edf1f5;
+        margin-top:20px;
+    }
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid transparent;
+        border-radius: 0;
+    }
+    .btn-circle.btn-lg, .btn-group-lg>.btn-circle.btn {
+        width: 50px;
+        height: 50px;
+        padding: 14px 15px;
+        font-size: 18px;
+        line-height: 23px;
+    }
+    .text-muted {
+        color: #8898aa!important;
+    }
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+        cursor: pointer;
+    }
+    .btn-circle {
+        border-radius: 100%;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+    .user-table tbody tr .category-select {
+        max-width: 150px;
+        border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <a href="{% url 'home' %}" style="margin-left: 7.5%;" type="button" class="btn btn-lg btn-primary mb-3">Home</a>
+  <a href="{% url 'createuser' %}" style="margin-left: 2%;" type="button" class="btn btn-lg btn-secondary mb-3">Create User</a>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-uppercase mb-0" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Users</h4>
+                </div>
+                <div class="table-responsive">
+                    <table class="table no-wrap user-table mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="border-0 text-uppercase font-medium pl-4">S.no</th>
+                          <th scope="col" class="border-0 text-uppercase font-medium">Firstname</th>
+                          <th scope="col" class="border-0 text-uppercase font-medium">Lastname</th>
+                          <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+                          <th scope="col" class="border-0 text-uppercase font-medium">Username</th>
+                          <th scope="col" class="border-0 text-uppercase font-medium">Gender</th>
+                          <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for user in users %}
+                        <tr>
+                          <td class="pl-4">{{user.id}}</td>
+                          <td>
+                              <h6 class="font-medium mb-0">{{user.first_name}}</h6>
+                          </td>
+                          <td>
+                            <h6 class="font-medium mb-0">{{user.last_name}}</h6>
+                          </td>
+                          <td>
+                            <h6 class="font-medium mb-0">{{user.email}}</h6>
+                          </td>
+                          <td>
+                            <h6 class="font-medium mb-0">{{user.username}}</h6>
+                          </td>
+                          <td>
+                            <h6 class="font-medium mb-0">{{user.gender}}</h6>
+                          </td>
+                          <td>
+                            <a href="/get_user/{{user.slug}}/" type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle"><i class="fa fa-eye"></i> </a>
+                            <a href="/updateuser/{{user.slug}}/" type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-edit"></i> </a>
+                            <a href="/delete_user/{{user.slug}}/" type="button" onclick="return confirm('Are you sure you want to delete this user?')"
+                            class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"><i class="fa fa-trash"></i> </a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
